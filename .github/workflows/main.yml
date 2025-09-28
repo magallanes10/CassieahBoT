@@ -3,7 +3,7 @@ name: Deploy to Hugging Face Space
 on:
   push:
     branches:
-      - main   # Trigger only when pushing to main
+      - main
 
 jobs:
   deploy:
@@ -12,14 +12,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Git
+      - name: Configure Git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Push to Hugging Face Space
+      - name: Push to Hugging Face
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          git remote add space https://huggingface.co/spaces/hutchingd/Cassidy-Bot
-          git push --force https://user:$HF_TOKEN@huggingface.co/spaces/hutchingd/Cassidy-Bot.git main
+          git remote add space https://user:$HF_TOKEN@huggingface.co/spaces/hutchingd/Cassidy-Bot
+          git push --force space main
