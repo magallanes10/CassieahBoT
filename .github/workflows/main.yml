@@ -18,6 +18,6 @@ jobs:
       - name: Push to Hugging Face Hub
         uses: huggingface/hub-action@v1
         with:
-          repo: spaces/hutchingd/Cassidy-Bot
+          repo: hutchingd/Cassidy-Bot
           repo-token: ${{ secrets.HF_TOKEN }}
         
